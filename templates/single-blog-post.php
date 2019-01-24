@@ -14,24 +14,17 @@
 <?php
 require "masthead.php";
 require "menu.php";
-?>
+echo <<<MAIN
 <div role="main">
-<h2>De senaste blogginläggen</h2>
-<?php
-foreach ( $temporary as $slug => $blogpost) {
-	$slug = urlencode($slug);
-	echo <<< ARTICLE
-	<article class="blogpostlist">
-	<h3><a href="blog.php?slug={$slug}">{$blogpost['title']}</a></h3>
-	<p><small>Postad {$blogpost['pubdate']} av {$blogpost['username']}</small></p>
-	
-	<div class="blogtext">
+<article class="singleblogpost">
+<h2>{$blogpost['title']}</h2>
+<p><small>Postad {$blogpost['pubdate']} av {$blogpost['username']}</small></p>
+<div class="blogtext">
 	{$blogpost['text']}
 	</div>
 	</article>
-ARTICLE;
-}
-echo "</div>\n";
+	</div>
+MAIN;
 require "footer.php";
 ?>
 </body>
